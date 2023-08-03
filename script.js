@@ -12,6 +12,13 @@ let quotes = [
     const randomQuote = function() {
       document.querySelector('#quote-of-the-day').textContent = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
     };
+
+    // Select the #quote-title element by its ID
+const quoteTitle = document.querySelector("#quote-title");
+
+// Add a click event listener to the #quote-title element
+quoteTitle.addEventListener("click", randomQuote); //part 8
+
     randomQuote();
     
     // Do all of your work inside the document.addEventListener  
@@ -31,26 +38,50 @@ let quotes = [
 
     // Part 4 Select all .special-title class elements and change their font-size to 2rem.
     const specialTitle = document.querySelectorAll(".special-title");
-    specialTitle.foreach(title => {
-    title.style.fontSize ='2rem'; });
+    specialTitle.forEach(title => {
+    title.style.fontSize = '2rem';
+    });
+    
+   // Part 5 remove Chicago from the ul
+   const pastRacesList = document.getElementById("past-races"); //select the list by id
+   const chicagoListItem = pastRacesList.querySelector('li:nth-child(4)');//to select the fourth <li> element
+   pastRacesList.removeChild(chicagoListItem);//removes the selected "chicagoListItem" from the "pastRacesList"
+   
 
-   // Part 5
-    const pastRacesList = document.querySelector("past-races");
-    const chicagoListItem = pastRacesList.querySelector('li:last-child'); 
-    pastRacesList.removeChild(chicagoListItem);
+  // Part 6 add new city to list
+  const addItemtoList = document.createElement("li");//  creates an empty <li>
+  addItemtoList.textContent = "Detroit"; // the text added to <li>
+  pastRacesList.appendChild(addItemtoList); // appendChild() method is called on the "pastRacesList"
 
-    // Part 6
+  // Part 7 Create a new .blog-post corresponding to the new city added in Part 6.
+  const blogs = document.querySelector(".blog-post.purple"); // selecting blog-post.purple, use querySelector
+  const newBlog = document.createElement("div"); // creating a space
+  const newBlogTitle = document.createElement("h2"); // creating a title
+  newBlogTitle.textContent = "Detroit Grand Prix"; // input content
+  const newBlogContent = document.createElement("p");
+  newBlogContent.textContent = "I took Vin Diesel on 7 mile, we both driving a lambo, and we had buffs on"; // corrected content
+  newBlog.appendChild(newBlogTitle);
+  newBlog.appendChild(newBlogContent);
+  blogs.appendChild(newBlog);
   
-  
-    // Part 7
-  
-  
-    // Part 8
-  
-  
-    // Part 9
-  
-  
-  
-  
+  // Part 9
+// Select all .blog-post class elements
+const blogPosts = document.querySelectorAll(".blog-post");
+
+// Iterate through the list of .blog-post class elements
+blogPosts.forEach(blogPost => {
+  // Add a mouseleave event listener to each .blog-post element
+  blogPost.addEventListener("mouseleave", function() {
+    // Toggle the class .purple on mouseleave
+    blogPost.classList.toggle("purple");
   });
+
+  // Add a mouseenter event listener to each .blog-post element
+  blogPost.addEventListener("mouseenter", function() {
+    // Toggle the class .red on mouseenter
+    blogPost.classList.toggle("red");
+  });
+});
+
+
+})
